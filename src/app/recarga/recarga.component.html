@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="form-container">
+      <h2>Recargar Saldo</h2>
+      <div class="form-group">
+        <label for="telefono">Número de teléfono:</label>
+        <input type="text" id="telefono" [(ngModel)]="telefono" placeholder="Ingrese el número de teléfono">
+      </div>
+      <div class="form-group">
+        <label for="monto">Monto a recargar:</label>
+        <input type="number" id="monto" [(ngModel)]="monto" placeholder="Ingrese el monto a recargar">
+      </div>
+      <div class="form-group">
+        <button (click)="recargarSaldo() ; refreshPage()" class="btn">Recargar</button>
+      </div>
+      <div class="message-container">
+        <p *ngIf="recargaExitosa" class="message success">La recarga se realizó con éxito</p>
+        <p *ngIf="errorRecarga" class="message error">Hubo un error al realizar la recarga</p>
+      </div>
+    </div>
+  
+    <div class="person-list">
+      <h2>Lista de Personas</h2>
+      <div *ngFor="let persona of personas | async" class="person-card">
+        <p>Persona: {{ persona.nombre }}</p>
+        <p>Telefono: {{ persona.telefono }}</p>
+        <p>Saldo: {{ persona.saldo }}</p>
+      </div>
+    </div>
+  </div>
+  
